@@ -102,7 +102,6 @@ export function FolderContent() {
 		try {
 			if (storeState.folder.type === 'local') {
 				files = await AppLocalStore.files.GetFiles();
-
 				if (!files.length) {
 					setLoadMessage('占无共享文件');
 				}
@@ -135,6 +134,12 @@ export function FolderContent() {
 			folderFiles: files,
 		});
 	}
+
+	useEffect(() => {
+		if (storeState.searchText !== '') {
+			console.log(storeState.searchText);
+		}
+	}, []);
 
 	useEffect(() => {
 		LoadFiles();

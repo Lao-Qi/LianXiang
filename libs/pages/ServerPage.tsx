@@ -31,8 +31,8 @@ export function ServerPage() {
 		fontSize: 17,
 	};
 
-	function HandleCopy(text: string) {
-		Clipboard.setString(text);
+	function HandleCopyAddress() {
+		Clipboard.setString(`${serverAddress}:${serverPort}`);
 		ShowToastMessage('复制成功');
 	}
 
@@ -79,8 +79,8 @@ export function ServerPage() {
 							<Text style={{fontSize: 16}}>服务器未启动</Text>
 						) : (
 							<View style={style.server_state}>
-								<QRCode value={`http://${serverAddress}:${serverPort}`} size={120} />
-								<Pressable onPress={() => HandleCopy(`${serverAddress}:${serverPort}`)}>
+								<QRCode value={`${serverAddress}:${serverPort}`} size={120} />
+								<Pressable onPress={() => HandleCopyAddress()}>
 									<Text
 										style={{
 											marginTop: 20,

@@ -30,11 +30,11 @@ export function ConnectDeviceItem(props: PropsType) {
 	/**  校验地址是否为共享服务器*/
 	function HandleValidConnectAddress(): Promise<void> {
 		return new Promise(res => {
-			if (NetWorkUtils.isLocalAddress(connectAddress)) {
-				ShowToastMessage('请勿输入本地地址');
-				setConnectAddress('');
-				return;
-			}
+			// if (NetWorkUtils.isLocalAddress(connectAddress)) {
+			// 	ShowToastMessage('请勿输入本地地址');
+			// 	setConnectAddress('');
+			// 	return;
+			// }
 
 			if (!NetWorkUtils.isValidIPAddressAndPortImproved(connectAddress)) {
 				ShowToastMessage('地址错误');

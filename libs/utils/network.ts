@@ -25,8 +25,22 @@ export class NetWorkUtils {
 	 */
 	static isValidShareServer(address: string): Promise<void> {
 		return new Promise((resolve, reject) => {
+			console.log(`http://${address}/connect`);
+
+			// fetch(`http://10.54.153.175:9091/connect`).then(async res => {
+			// 	const data = await res.json()
+			// 	if (!data["status"]) {
+			// 		return reject("URL不是共享服务器")
+			// 	}
+
+			// 	resolve()
+			// }).catch((err) => {
+			// 	console.log(err);
+			// 	reject("请求失败，请确保链接正确且对方服务器开启中")
+			// })
+
 			// 向服务器请求连接
-			fetch(`http:${address}/connect`).then(async res => {
+			fetch(`http://${address}/connect`).then(async res => {
 				const data = await res.json()
 				if (!data["status"]) {
 					return reject("URL不是共享服务器")
