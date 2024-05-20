@@ -23,7 +23,6 @@ DerivedData
 ios/.xcode.env.local
 
 # application release
-release.jks
 
 # Android/IntelliJ
 #
