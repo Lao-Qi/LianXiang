@@ -9,6 +9,7 @@ type StoreType = {
 	folder: StoreDeviceType & {
 		type: 'local' | 'remote';
 	};
+	searchText: string;
 	fileInfo: {
 		address: string;
 		size: number;
@@ -27,6 +28,7 @@ const StoreDefaultState: StoreType = {
 	scan: {
 		content: '',
 	},
+	searchText: '',
 	// 资源目录配置
 	folder: {
 		uuid: '',

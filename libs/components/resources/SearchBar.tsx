@@ -1,10 +1,14 @@
 import {View, StyleSheet, TextInput, Pressable, Text} from 'react-native';
-import {useContext} from 'react';
+import {useContext, useState} from 'react';
 import {ThemeContext} from '../../theme';
 
+type PorpsType = {
+	onSearch?: (text: string) => void;
+};
 /** 资源的搜索框 */
-export function SearchBar() {
+export function SearchBar({onSearch}: PorpsType) {
 	const {themeStyle} = useContext(ThemeContext);
+	const [searchText, setSearchText] = useState('');
 	const android_ripple = {
 		color: themeStyle.android_ripple_color,
 		fontSize: 300,
@@ -20,8 +24,11 @@ export function SearchBar() {
 					borderRadius: 5,
 					backgroundColor: themeStyle.bgc1,
 				}}
-				placeholder="请输入文件名/目录名"></TextInput>
+				value={searchText}
+				onChange={e => setSearchText(e.nativeEvent.text)}
+				placeholder="请输入文件名"></TextInput>
 			<Pressable
+				onPress={() => onSearch && onSearch(searchText)}
 				android_ripple={android_ripple}
 				style={{
 					display: 'flex',

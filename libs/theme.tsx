@@ -1,5 +1,5 @@
 import {createContext, useState} from 'react';
-import {useColorScheme} from 'react-native';
+// import {useColorScheme} from 'react-native';
 import type {PropsWithChildren} from 'react';
 
 const commonStyle = {
@@ -62,7 +62,8 @@ export const ThemeContext = createContext<ThemeContextType>({
 });
 
 export function ThemeContextProvider({children}: PropsWithChildren) {
-	const [theme, _ChangeTheme] = useState(useColorScheme() || 'light');
+	// const [theme, _ChangeTheme] = useState(useColorScheme() || 'light');
+	const [theme, _ChangeTheme] = useState<'light' | 'dark'>('light');
 	const [themeStyle, _ChangeStyle] = useState(ThemeStyleMap[theme]);
 
 	function ChangeTheme(theme: 'dark' | 'light') {

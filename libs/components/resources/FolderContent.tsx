@@ -13,6 +13,7 @@ export function FolderContent() {
 	const {storeState, ChangeStoreState} = useContext(StoreContext);
 	const {themeStyle} = useContext(ThemeContext);
 	const {ShowToastMessage} = useContext(ToastContext);
+	const [renderFiles, setRenderFiles] = useState<StoreFileType[]>([]);
 	const [loadMessage, setLoadMessage] = useState('文件获取中...');
 
 	// 属性配置
@@ -90,6 +91,7 @@ export function FolderContent() {
 				...storeState,
 				folderFiles,
 			});
+			setRenderFiles(folderFiles);
 		} catch {
 			// 无视用户未选择文件直接退出的错误
 		}
@@ -133,13 +135,18 @@ export function FolderContent() {
 			...storeState,
 			folderFiles: files,
 		});
+
+		setRenderFiles(files);
 	}
 
-	useEffect(() => {
-		if (storeState.searchText !== '') {
-			console.log(storeState.searchText);
+	function HandleSearch(text: string) {
+		if (text === '') {
+			setRenderFiles(storeState.folderFiles);
+		} else {
+			const regex = new RegExp(`[${text.split('').join('].*?[')}].*?`, 'i');
+			setRenderFiles(renderFiles.filter(file => regex.test(file.name)));
 		}
-	}, []);
+	}
 
 	useEffect(() => {
 		LoadFiles();
@@ -165,11 +172,11 @@ export function FolderContent() {
 
 	return (
 		<>
-			<SearchBar />
+			<SearchBar onSearch={HandleSearch} />
 			<ScrollView style={{flex: 1, paddingHorizontal: 10}}>
 				<Card title={storeState.folder.address === '/' ? '共享目录' : storeState.folder.address}>
-					{storeState.folderFiles.length ? (
-						storeState.folderFiles.map(file => {
+					{renderFiles.length ? (
+						renderFiles.map(file => {
 							return (
 								<FileItem
 									option={{...file, showType: storeState.folder.type}}
