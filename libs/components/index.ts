@@ -14,4 +14,7 @@ export * from "./resources/SearchBar"
 export * from "./resources/FolderContent"
 export * from "./resources/FileInfo"
 
+export * from "./share/ShareFileItem"
+export * from "./share/ShareFileInfo"
+
 export * from "./card/Card"

@@ -76,7 +76,7 @@ export function FolderContent() {
 				return;
 			}
 
-			const file = await AppLocalStore.files.AddFile({
+			const files = await AppLocalStore.files.AddFile({
 				name: result.name,
 				size: result.size,
 				type: result.type,
@@ -84,14 +84,11 @@ export function FolderContent() {
 				fileCopyUri: result.fileCopyUri,
 			});
 
-			const folderFiles = storeState.folderFiles;
-			folderFiles.push(file);
-
 			ChangeStoreState({
 				...storeState,
-				folderFiles,
+				folderFiles: files,
 			});
-			setRenderFiles(folderFiles);
+			setRenderFiles(files);
 		} catch {
 			// 无视用户未选择文件直接退出的错误
 		}

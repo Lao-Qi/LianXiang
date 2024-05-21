@@ -79,7 +79,7 @@ export function ServerPage() {
 							<Text style={{fontSize: 16}}>服务器未启动</Text>
 						) : (
 							<View style={style.server_state}>
-								<QRCode value={`${serverAddress}:${serverPort}`} size={120} />
+								<QRCode value={`http://${serverAddress}:${serverPort}`} size={120} />
 								<Pressable onPress={() => HandleCopyAddress()}>
 									<Text
 										style={{

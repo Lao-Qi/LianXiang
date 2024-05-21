@@ -10,8 +10,6 @@ export function ResourcePage() {
 
 	useEffect(() => {
 		AppLocalStore.device.GetDevices().then(devices => {
-			console.log(devices);
-
 			ChangeStoreState({
 				...storeState,
 				devices,

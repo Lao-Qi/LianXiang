@@ -82,7 +82,14 @@ export class AppLocalStore {
 			files.push(file)
 			await AsyncStorage.setItem("SHARE_FILES", JSON.stringify(files))
 
-			return file
+			return files
+		},
+		async RemoveFile(option: StoreFileType) {
+			const files = await this.GetFiles();
+			const newFiles = files.filter(file => file.uuid !== option.uuid);
+			await AsyncStorage.setItem("SHARE_FILES", JSON.stringify(newFiles))
+
+			return newFiles
 		}
 	}
 

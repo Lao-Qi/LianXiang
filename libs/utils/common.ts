@@ -12,4 +12,4 @@ export function convertBytesToMBGB(bytes: number, decimalPlaces = 2): string {
 	}
 
 	return `${(bytes / (1024 * 1024 * 1024)).toFixed(decimalPlaces)} GB`;
-}  
+}

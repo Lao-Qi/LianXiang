@@ -1,7 +1,6 @@
 import React, {createContext, useState} from 'react';
 import type {PropsWithChildren} from 'react';
-import {ResourcePage, ServerPage} from './pages';
-import {ScanCode} from './pages/ScanCode';
+import {SharePage, ServerPage} from './pages';
 
 /** 路由配置 */
 const RouterConfig = {
@@ -11,7 +10,7 @@ const RouterConfig = {
 			title: 'Resource',
 			path: 'resource',
 			mainView: true,
-			Component: ResourcePage,
+			Component: SharePage,
 		},
 		server: {
 			title: 'Server',
@@ -19,12 +18,12 @@ const RouterConfig = {
 			mainView: true,
 			Component: ServerPage,
 		},
-		scancode: {
-			title: 'ScanCode',
-			path: 'scancode',
-			mainView: false,
-			Component: ScanCode,
-		},
+		// scancode: {
+		// 	title: 'ScanCode',
+		// 	path: 'scancode',
+		// 	mainView: false,
+		// 	Component: ScanCode,
+		// },
 	},
 };
 
