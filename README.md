@@ -30,6 +30,10 @@ yarn android
 
 [可直接根据 react-native 官方文档进行配置](https://reactnative.cn/docs/signed-apk-android)
 
+### 待解决
+
+1. 后面单独开个分支发布 1.2.0 版本
+
 #### 部分依赖因历史遗留问题，需要做出修改
 
 ##### 1. react-native-camera 的类型提示报错(debug)
