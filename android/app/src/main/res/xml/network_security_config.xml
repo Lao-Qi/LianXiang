@@ -5,5 +5,5 @@
             <certificates src="system" overridePins="true" />
             <certificates src="user" overridePins="true" />
         </trust-anchors>
-    </base-config>>
+    </base-config>
 </network-security-config>
