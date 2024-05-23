@@ -32,7 +32,7 @@ export function ServerPage() {
 	};
 
 	function HandleCopyAddress() {
-		Clipboard.setString(`${serverAddress}:${serverPort}`);
+		Clipboard.setString(`http://${serverAddress}:${serverPort}`);
 		ShowToastMessage('复制成功');
 	}
 
