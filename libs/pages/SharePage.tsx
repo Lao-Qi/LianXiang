@@ -1,13 +1,12 @@
 import {Pressable, ScrollView, StyleSheet, Text, View, BackHandler, Alert} from 'react-native';
 import {Card, ShareFileItem, ShareFileInfo, ToastContext} from '../components';
 import {useContext, useEffect, useState} from 'react';
-import {ThemeContext} from '../theme';
+import {themeStyle} from '../theme';
 import {BsUpload} from 'rn-icons/bs';
 import {AppLocalStore, StoreFileType} from '../utils';
 import {pick} from 'react-native-document-picker';
 
 export function SharePage() {
-	const {themeStyle} = useContext(ThemeContext);
 	const {ShowToastMessage} = useContext(ToastContext);
 	const [renderFiles, setRenderFiles] = useState<StoreFileType[]>([]);
 	const [showFileInfo, setshowFileInfo] = useState<StoreFileType | null>(null);

@@ -1,6 +1,6 @@
 import {PropsWithChildren, createContext, useContext, useEffect, useState} from 'react';
 import {StyleSheet, View, Text, Animated} from 'react-native';
-import {ThemeContext} from '../../theme';
+import {themeStyle} from '../../theme';
 
 type ToastContextType = {
 	ShowToastMessage: (message: string) => void;
@@ -38,7 +38,6 @@ export function ToastContextProvider({children}: PropsWithChildren) {
 }
 
 export function ToastComponent() {
-	const {themeStyle} = useContext(ThemeContext);
 	const {showState, showMessage, HideToastMessage} = useContext(ToastContext);
 	/** 弹出时间 */
 	const animDuration = 1000;

@@ -4,7 +4,7 @@ import FileViewer from 'react-native-file-viewer';
 import {Alert, BackHandler, Pressable, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {StoreFileType, convertBytesToMBGB} from '../../utils';
 import {Card} from '../card/Card';
-import {ThemeContext} from '../../theme';
+import {themeStyle} from '../../theme';
 
 type PropsType = {
 	fileInfo: StoreFileType;
@@ -18,7 +18,6 @@ export function ShareFileInfo({setFileInfo, fileInfo, onRemoveFile}: PropsType) 
 		color: 'rgba(255, 255, 255, 0.2)',
 		radius: 300,
 	};
-	const {themeStyle} = useContext(ThemeContext);
 	const copyName = fileInfo.name.length >= 20 ? `${fileInfo.name.slice(0, 17)}...` : fileInfo.name;
 
 	function HandlePreview() {

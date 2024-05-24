@@ -1,6 +1,5 @@
 import {Pressable, Text} from 'react-native';
-import {useContext} from 'react';
-import {ThemeContext} from '../../theme';
+import {themeStyle} from '../../theme';
 import {BsChevronRight, BsFileEarmark} from 'rn-icons/bs';
 
 type PropsType = {
@@ -9,7 +8,6 @@ type PropsType = {
 };
 
 export function ShareFileItem({name, onPress}: PropsType) {
-	const {themeStyle} = useContext(ThemeContext);
 	const android_ripple = {
 		color: themeStyle.android_ripple_color,
 		fontSize: 300,

@@ -5,7 +5,7 @@ import {SafeAreaView, StatusBar, StyleSheet, View, Dimensions} from 'react-nativ
 import type {PropsWithChildren} from 'react';
 import {ToastComponent, ToastContextProvider} from './message/Toast';
 import {RouterContext, RouterContextProvider} from '../router';
-import {ThemeContextProvider, ThemeContext} from '../theme';
+import {themeStyle} from '../theme';
 import {ServerContextProvider} from '../server';
 import {StoreContextProvider} from '../store';
 
@@ -15,9 +15,7 @@ export function AppConfigContextProvider({children}: PropsWithChildren) {
 		<StoreContextProvider>
 			<RouterContextProvider>
 				<ToastContextProvider>
-					<ServerContextProvider>
-						<ThemeContextProvider>{children}</ThemeContextProvider>
-					</ServerContextProvider>
+					<ServerContextProvider>{children}</ServerContextProvider>
 				</ToastContextProvider>
 			</RouterContextProvider>
 		</StoreContextProvider>
@@ -28,16 +26,13 @@ export function AppConfigContextProvider({children}: PropsWithChildren) {
 export function AppViewContainer({children}: PropsWithChildren) {
 	// 窗口大小
 	const {width, height} = Dimensions.get('window');
-	// 主题
-	const {theme, themeStyle} = useContext(ThemeContext);
-	const StatusBarStyle = theme === 'dark' ? 'light-content' : 'dark-content';
 	// 路由
 	const {GetPageConfig, currentPath} = useContext(RouterContext);
 	const routeConfig = GetPageConfig(currentPath);
 
 	return (
 		<SafeAreaView style={[{width, height, backgroundColor: themeStyle.bgc1}]}>
-			<StatusBar barStyle={StatusBarStyle} backgroundColor={themeStyle.bgc2} />
+			<StatusBar barStyle={'light-content'} backgroundColor={themeStyle.bgc2} />
 			{routeConfig.mainView ? (
 				<View style={style.body}>{children}</View>
 			) : (

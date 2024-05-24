@@ -1,13 +1,12 @@
 import {View, StyleSheet, TextInput, Pressable, Text} from 'react-native';
-import {useContext, useState} from 'react';
-import {ThemeContext} from '../../theme';
+import {useState} from 'react';
+import {themeStyle} from '../../theme';
 
 type PorpsType = {
 	onSearch?: (text: string) => void;
 };
 /** 资源的搜索框 */
 export function SearchBar({onSearch}: PorpsType) {
-	const {themeStyle} = useContext(ThemeContext);
 	const [searchText, setSearchText] = useState('');
 	const android_ripple = {
 		color: themeStyle.android_ripple_color,

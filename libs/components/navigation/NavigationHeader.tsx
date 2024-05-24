@@ -1,10 +1,9 @@
 import {useContext} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
-import {ThemeContext} from '../../theme';
+import {themeStyle} from '../../theme';
 import {RouterContext} from '../../router';
 
 export function NavigationHeader() {
-	const {themeStyle} = useContext(ThemeContext);
 	const {currentPath, GetPageConfig} = useContext(RouterContext);
 	const info = GetPageConfig(currentPath);
 

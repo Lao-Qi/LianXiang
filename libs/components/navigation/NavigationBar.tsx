@@ -1,11 +1,10 @@
 import {useContext} from 'react';
 import {StyleSheet, View, Pressable, Text} from 'react-native';
 import {BsServer, BsFolderFill} from 'rn-icons/bs';
-import {ThemeContext} from '../../theme';
+import {themeStyle} from '../../theme';
 import {RouterContext} from '../../router';
 
 export function NavigationBar() {
-	const {themeStyle} = useContext(ThemeContext);
 	const {currentPath, TogglePage} = useContext(RouterContext);
 
 	/**

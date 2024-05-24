@@ -1,6 +1,5 @@
-import {useContext} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
-import {ThemeContext} from '../../theme';
+import {themeStyle} from '../../theme';
 import type {PropsWithChildren} from 'react';
 
 type CardProps = PropsWithChildren & {
@@ -8,8 +7,6 @@ type CardProps = PropsWithChildren & {
 };
 
 export function Card({title, children}: CardProps) {
-	const {themeStyle} = useContext(ThemeContext);
-
 	return (
 		<View style={style.card}>
 			<Text style={[style.card_title, {color: themeStyle.color3}]}>{title}</Text>

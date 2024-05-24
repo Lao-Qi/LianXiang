@@ -7,11 +7,9 @@ import QRCode from 'react-native-qrcode-svg';
 import {Card, ToastContext} from '../components';
 import {AppLocalStore} from '../utils';
 import {ServerContext} from '../server';
-import {ThemeContext} from '../theme';
+import {themeStyle} from '../theme';
 
 export function ServerPage() {
-	// 上下文状态获取
-	const {themeStyle} = useContext(ThemeContext);
 	const {ShowToastMessage} = useContext(ToastContext);
 	const {shareServer} = useContext(ServerContext);
 	// 服务器属性
