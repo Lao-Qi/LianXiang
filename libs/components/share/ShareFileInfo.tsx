@@ -1,5 +1,7 @@
 import {useContext, useEffect} from 'react';
-import {BackHandler, Pressable, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {BsChevronRight} from 'rn-icons/bs';
+import FileViewer from 'react-native-file-viewer';
+import {Alert, BackHandler, Pressable, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {StoreFileType, convertBytesToMBGB} from '../../utils';
 import {Card} from '../card/Card';
 import {ThemeContext} from '../../theme';
@@ -19,6 +21,14 @@ export function ShareFileInfo({setFileInfo, fileInfo, onRemoveFile}: PropsType) 
 	const {themeStyle} = useContext(ThemeContext);
 	const copyName = fileInfo.name.length >= 20 ? `${fileInfo.name.slice(0, 17)}...` : fileInfo.name;
 
+	function HandlePreview() {
+		FileViewer.open(fileInfo.fileCopyUri, {showOpenWithDialog: true});
+	}
+
+	function HandleShowName() {
+		Alert.alert('文件全称', fileInfo.name);
+	}
+
 	useEffect(() => {
 		const handler = BackHandler.addEventListener('hardwareBackPress', () => {
 			setFileInfo(null);
@@ -33,10 +43,20 @@ export function ShareFileInfo({setFileInfo, fileInfo, onRemoveFile}: PropsType) 
 		<>
 			<ScrollView style={{flex: 1, paddingHorizontal: 10}}>
 				<Card title="本地共享资源">
-					<View style={style.infoItem}>
+					<Pressable
+						onPress={HandleShowName}
+						android_ripple={{color: themeStyle.android_ripple_color, radius: 300}}
+						style={style.infoItem}>
 						<Text style={{fontSize: 18, color: themeStyle.color1}}>名称：</Text>
-						<Text style={{fontSize: 18, color: themeStyle.color1}}>{copyName}</Text>
-					</View>
+						<View
+							style={{
+								display: 'flex',
+								alignItems: 'center',
+							}}>
+							<Text style={{fontSize: 18, color: themeStyle.color1}}>{copyName}</Text>
+							<BsChevronRight style={{marginRight: 5}} size={20} color={themeStyle.color2} />
+						</View>
+					</Pressable>
 					<View style={style.infoItem}>
 						<Text style={{fontSize: 18, color: themeStyle.color1}}>大小：</Text>
 						<Text style={{fontSize: 18, color: themeStyle.color1}}>
@@ -51,6 +71,13 @@ export function ShareFileInfo({setFileInfo, fileInfo, onRemoveFile}: PropsType) 
 						<Text style={{fontSize: 18, color: themeStyle.color1}}>类型：</Text>
 						<Text style={{fontSize: 18, color: themeStyle.color1}}>本地资源</Text>
 					</View>
+					<Pressable
+						onPress={HandlePreview}
+						android_ripple={{color: themeStyle.android_ripple_color, radius: 300}}
+						style={style.infoItem}>
+						<Text style={{fontSize: 18, color: themeStyle.color1}}>预览：</Text>
+						<BsChevronRight size={20} color={themeStyle.color2} />
+					</Pressable>
 				</Card>
 			</ScrollView>
 			<View
