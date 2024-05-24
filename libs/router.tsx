@@ -18,12 +18,6 @@ const RouterConfig = {
 			mainView: true,
 			Component: ServerPage,
 		},
-		// scancode: {
-		// 	title: 'ScanCode',
-		// 	path: 'scancode',
-		// 	mainView: false,
-		// 	Component: ScanCode,
-		// },
 	},
 };
 

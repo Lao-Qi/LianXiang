@@ -82,7 +82,6 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 2
         versionName "1.1.0"
-        missingDimensionStrategy "react-native-camera", "general"
     }
     signingConfigs {
         debug {
@@ -124,9 +123,6 @@ dependencies {
     } else {
         implementation jscFlavor
     }
-
-    // react-native-camera
-    implementation(project(":react-native-camera"))
 
     // android server https://github.com/NanoHttpd/nanohttpd
     implementation("org.nanohttpd:nanohttpd:2.3.1")

@@ -31,37 +31,6 @@ export class AppLocalStore {
 		}
 	}
 
-	static device = {
-		async GetDevices(): Promise<StoreDeviceType[]> {
-			const value = await AsyncStorage.getItem("SHARE_DEVICES")
-			let devices: StoreDeviceType[] = []
-			if (value) {
-				devices = JSON.parse(value)
-			}
-
-			return devices
-		},
-		async AddDevice(address: string): Promise<StoreDeviceType> {
-			const device = {
-				uuid: uuidv4(),
-				addTime: Date.now(),
-				address
-			}
-
-			const devices = await this.GetDevices()
-			devices.push(device)
-			await AsyncStorage.setItem("SHARE_DEVICES", JSON.stringify(devices))
-
-			return device
-		},
-		async RemoveDevice(uuid: string): Promise<StoreDeviceType[]> {
-			let devices = await this.GetDevices()
-			devices = devices.filter(device => device.uuid !== uuid)
-			await AsyncStorage.setItem("SHARE_DEVICES", JSON.stringify(devices))
-			return devices
-		}
-	}
-
 	static files = {
 		async GetFiles(): Promise<StoreFileType[]> {
 

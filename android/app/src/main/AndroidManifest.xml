@@ -35,4 +35,13 @@
         </intent-filter>
       </activity>
     </application>
+    <!-- 文件预览
+        https://www.npmjs.com/package/react-native-file-viewer#extra-step-android-only
+    -->
+    <queries>
+       <intent>
+        <action android:name="android.intent.action.VIEW" />
+        <data android:mimeType="*/*" />
+      </intent>
+    </queries>
 </manifest>

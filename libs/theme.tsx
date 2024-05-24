@@ -1,5 +1,4 @@
 import {createContext, useState} from 'react';
-// import {useColorScheme} from 'react-native';
 import type {PropsWithChildren} from 'react';
 
 const commonStyle = {

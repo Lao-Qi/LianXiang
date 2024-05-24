@@ -1,6 +1,4 @@
-/**
- * 将App.tsx中的部分配置迁移到base.tsx，简化App.tsx内容与结构
- */
+/** 将App.tsx中的部分配置迁移到base.tsx，简化App.tsx内容与结构 */
 
 import React, {useContext} from 'react';
 import {SafeAreaView, StatusBar, StyleSheet, View, Dimensions} from 'react-native';
