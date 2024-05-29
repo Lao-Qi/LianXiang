@@ -1,7 +1,6 @@
 apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
-apply plugin: "kotlin-kapt"
 
 /**
  * This is the configuration block to customize your React Native Android app.
@@ -126,13 +125,6 @@ dependencies {
 
     // android server https://github.com/NanoHttpd/nanohttpd
     implementation("org.nanohttpd:nanohttpd:2.3.1")
-
-    // room dependencies
-    //  If you want to update to version 2.6.1, update kotlin to version 1.9.0 simultaneously
-    def room_version = "2.5.2"
-    implementation("androidx.room:room-runtime:$room_version")
-    implementation("androidx.room:room-ktx:$room_version")
-    kapt("androidx.room:room-compiler:$room_version")
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
